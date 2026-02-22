@@ -9,8 +9,12 @@ use Symkit\MenuBundle\Entity\MenuItem;
 
 final readonly class MenuItemPositionManager
 {
+    /**
+     * @param class-string $menuItemEntityClass
+     */
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private string $menuItemEntityClass,
     ) {
     }
 
@@ -25,7 +29,7 @@ final readonly class MenuItemPositionManager
 
         $qb = $this->entityManager->createQueryBuilder();
         $qb->select('mi')
-            ->from(MenuItem::class, 'mi')
+            ->from($this->menuItemEntityClass, 'mi')
             ->where('mi.menu = :menu')
             ->setParameter('menu', $menu)
             ->orderBy('mi.position', 'ASC')

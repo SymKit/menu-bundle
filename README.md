@@ -167,7 +167,6 @@ With `assets.enabled: true`, the bundle prepends its Stimulus controllers to Ass
 
 ```bash
 make install
-make install-hooks   # Install git hooks (e.g. strip Co-authored-by)
 make cs-fix
 make phpstan
 make test

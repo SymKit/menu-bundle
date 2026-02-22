@@ -88,13 +88,16 @@ class SymkitMenuBundle extends AbstractBundle
         $coreServices = [
             EventListener\MenuListener::class,
             Service\MenuItemChoicesProvider::class,
-            Service\MenuItemPositionManager::class,
             Manager\MenuManager::class,
         ];
 
         foreach ($coreServices as $class) {
             $services->set($class)->autowire()->autoconfigure();
         }
+
+        $services->set(Service\MenuItemPositionManager::class)
+            ->arg('$menuItemEntityClass', '%symkit_menu.entity.menu_item%')
+            ->autowire()->autoconfigure();
 
         if ($config['doctrine']['enabled']) {
             $services->set(Repository\MenuRepository::class)
