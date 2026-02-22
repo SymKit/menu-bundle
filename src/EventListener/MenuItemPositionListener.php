@@ -8,10 +8,10 @@ use Symkit\CrudBundle\Event\CrudEvent;
 use Symkit\MenuBundle\Entity\MenuItem;
 use Symkit\MenuBundle\Service\MenuItemPositionManager;
 
-class MenuItemPositionListener
+final readonly class MenuItemPositionListener
 {
     public function __construct(
-        private readonly MenuItemPositionManager $positionManager,
+        private MenuItemPositionManager $positionManager,
     ) {
     }
 

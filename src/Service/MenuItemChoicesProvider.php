@@ -7,7 +7,7 @@ namespace Symkit\MenuBundle\Service;
 use Symkit\MenuBundle\Entity\Menu;
 use Symkit\MenuBundle\Entity\MenuItem;
 
-final class MenuItemChoicesProvider
+final readonly class MenuItemChoicesProvider
 {
     /** @return array<int, array{value: string, label: string}> */
     public function getChoices(Menu $menu): array

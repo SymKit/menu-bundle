@@ -171,7 +171,7 @@ make install-hooks   # Install git hooks (e.g. strip Co-authored-by)
 make cs-fix
 make phpstan
 make test
-make quality         # cs-check + phpstan + deptrac + test
+make quality         # cs-check + phpstan + deptrac + lint + test + infection
 make ci              # security-check + quality
 ```
 

@@ -9,11 +9,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symkit\MenuBundle\Contract\MenuItemEntityInterface;
 use Symkit\MenuBundle\Repository\MenuItemRepository;
 
 #[ORM\Entity(repositoryClass: MenuItemRepository::class)]
 #[Assert\Callback(callback: 'validateUrlOrRoute', groups: ['create', 'edit'])]
-class MenuItem
+class MenuItem implements MenuItemEntityInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -57,6 +58,7 @@ class MenuItem
     public const TYPE_ADVANCED_DROPDOWN = 'advanced_dropdown';
 
     public const TYPE_MEGA = 'mega';
+
     public const TYPE_ADVANCED_ITEM = 'advanced_item';
 
     #[ORM\Column(length: 50)]

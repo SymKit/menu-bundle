@@ -7,10 +7,10 @@ namespace Symkit\MenuBundle\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Symkit\MenuBundle\Entity\MenuItem;
 
-class MenuItemPositionManager
+final readonly class MenuItemPositionManager
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 

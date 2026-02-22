@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Symkit\MenuBundle\Service;
 
+use Symkit\MenuBundle\Contract\MenuItemEntityInterface;
 use Symkit\MenuBundle\Contract\MenuItemInterface;
-use Symkit\MenuBundle\Entity\MenuItem as MenuItemEntity;
+use Symkit\MenuBundle\Contract\MenuModelFactoryInterface;
 use Symkit\MenuBundle\Mapper\MenuItemMapperInterface;
 
-final readonly class MenuModelFactory
+final readonly class MenuModelFactory implements MenuModelFactoryInterface
 {
     /**
      * @param iterable<MenuItemMapperInterface> $mappers
@@ -18,7 +19,7 @@ final readonly class MenuModelFactory
     ) {
     }
 
-    public function createModel(MenuItemEntity $entity): ?MenuItemInterface
+    public function createModel(MenuItemEntityInterface $entity): ?MenuItemInterface
     {
         foreach ($this->mappers as $mapper) {
             if ($mapper->supports($entity)) {

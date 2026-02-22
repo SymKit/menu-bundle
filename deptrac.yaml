@@ -59,8 +59,8 @@ deptrac:
             - type: directory
               value: src/DependencyInjection/.*
     ruleset:
-        Entity: [Repository]
-        Contract: [Entity, Service]
+        Entity: [Contract, Repository]
+        Contract: []
         Model: [Contract, Entity]
         Attribute: []
         Builder: [Contract, Model]

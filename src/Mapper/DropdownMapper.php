@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Symkit\MenuBundle\Mapper;
 
-use Symkit\MenuBundle\Entity\MenuItem;
+use Symkit\MenuBundle\Contract\MenuItemEntityInterface;
+use Symkit\MenuBundle\Contract\MenuModelFactoryInterface;
 use Symkit\MenuBundle\Model\MenuDropdown;
 use Symkit\MenuBundle\Model\MenuItemInterface;
-use Symkit\MenuBundle\Service\MenuModelFactory;
 
 final readonly class DropdownMapper implements MenuItemMapperInterface
 {
-    public function supports(MenuItem $entity): bool
+    public function supports(MenuItemEntityInterface $entity): bool
     {
-        return MenuItem::TYPE_DROPDOWN === $entity->getType();
+        return MenuItemEntityInterface::TYPE_DROPDOWN === $entity->getType();
     }
 
-    public function map(MenuItem $entity, MenuModelFactory $factory): MenuItemInterface
+    public function map(MenuItemEntityInterface $entity, MenuModelFactoryInterface $factory): MenuItemInterface
     {
         $subItems = [];
         foreach ($entity->getChildren() as $child) {

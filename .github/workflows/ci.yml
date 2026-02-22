@@ -27,6 +27,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: intl, mbstring, xml, dom
+          # Coverage required by Infection (mutation testing) in make quality
           coverage: xdebug
 
       - name: Get Composer cache directory

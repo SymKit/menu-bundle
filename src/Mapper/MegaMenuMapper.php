@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Symkit\MenuBundle\Mapper;
 
-use Symkit\MenuBundle\Entity\MenuItem;
+use Symkit\MenuBundle\Contract\MenuItemEntityInterface;
+use Symkit\MenuBundle\Contract\MenuModelFactoryInterface;
 use Symkit\MenuBundle\Model\MegaMenuArticle;
 use Symkit\MenuBundle\Model\MegaMenuSection;
 use Symkit\MenuBundle\Model\MenuItemInterface;
 use Symkit\MenuBundle\Model\MenuMega;
-use Symkit\MenuBundle\Service\MenuModelFactory;
 
 final readonly class MegaMenuMapper implements MenuItemMapperInterface
 {
-    public function supports(MenuItem $entity): bool
+    public function supports(MenuItemEntityInterface $entity): bool
     {
-        return MenuItem::TYPE_MEGA === $entity->getType();
+        return MenuItemEntityInterface::TYPE_MEGA === $entity->getType();
     }
 
-    public function map(MenuItem $entity, MenuModelFactory $factory): MenuItemInterface
+    public function map(MenuItemEntityInterface $entity, MenuModelFactoryInterface $factory): MenuItemInterface
     {
         $sections = [];
         foreach ($entity->getChildren() as $sectionEntity) {

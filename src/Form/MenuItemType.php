@@ -18,7 +18,7 @@ use Symkit\FormBundle\Form\Type\IconPickerType;
 use Symkit\FormBundle\Form\Type\SlugType;
 use Symkit\MenuBundle\Entity\MenuItem;
 
-class MenuItemType extends AbstractType
+final class MenuItemType extends AbstractType
 {
     public function __construct(
         private readonly string $menuItemEntityClass = MenuItem::class,

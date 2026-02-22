@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Symkit\MenuBundle\Mapper;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symkit\MenuBundle\Entity\MenuItem;
+use Symkit\MenuBundle\Contract\MenuItemEntityInterface;
+use Symkit\MenuBundle\Contract\MenuModelFactoryInterface;
 use Symkit\MenuBundle\Model\MenuItemInterface;
 use Symkit\MenuBundle\Model\MenuLink;
-use Symkit\MenuBundle\Service\MenuModelFactory;
 use Throwable;
 
 final readonly class LinkMapper implements MenuItemMapperInterface
@@ -18,12 +18,12 @@ final readonly class LinkMapper implements MenuItemMapperInterface
     ) {
     }
 
-    public function supports(MenuItem $entity): bool
+    public function supports(MenuItemEntityInterface $entity): bool
     {
-        return MenuItem::TYPE_LINK === $entity->getType();
+        return MenuItemEntityInterface::TYPE_LINK === $entity->getType();
     }
 
-    public function map(MenuItem $entity, MenuModelFactory $factory): MenuItemInterface
+    public function map(MenuItemEntityInterface $entity, MenuModelFactoryInterface $factory): MenuItemInterface
     {
         $url = $entity->getUrl() ?? '#';
         if ($entity->getRoute()) {

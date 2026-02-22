@@ -12,7 +12,7 @@ use Symkit\FormBundle\Form\Type\FormSectionType;
 use Symkit\FormBundle\Form\Type\SlugType;
 use Symkit\MenuBundle\Entity\Menu;
 
-class MenuType extends AbstractType
+final class MenuType extends AbstractType
 {
     public function __construct(
         private readonly string $menuEntityClass = Menu::class,
