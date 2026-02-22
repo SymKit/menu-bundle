@@ -9,7 +9,7 @@ use Symkit\MenuBundle\Manager\MenuManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-final class MenuExtension extends AbstractExtension
+class MenuExtension extends AbstractExtension
 {
     public function __construct(
         private readonly MenuManager $menuManager,

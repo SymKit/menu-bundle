@@ -138,9 +138,7 @@ class SymkitMenuBundle extends AbstractBundle
 
         if ($config['twig']['enabled']) {
             $services->set(Twig\MenuExtension::class)
-                ->autowire()
-                ->autoconfigure()
-                ->lazy(false)
+                ->autowire()->autoconfigure()->lazy(true)
                 ->tag('twig.extension');
             $path = $this->getPath();
             $container->extension('twig', ['paths' => [$path.'/templates' => 'SymkitMenu']], true);
